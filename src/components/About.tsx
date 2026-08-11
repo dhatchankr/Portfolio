@@ -1,27 +1,43 @@
+import { motion } from "motion/react";
 import profileImg from "../assets/images/profile.jpg";
+import { CheckCircle2, Award, Zap, Code, ShieldCheck, MapPin, GraduationCap } from "lucide-react";
 
 export default function About() {
-  const checklist = [
-    "Multi-Agent AI Systems",
-    "Vector Search & RAG Pipelines",
-    "Full-Stack Web Development",
-    "Cloud Containerization & APIs",
+  const capabilities = [
+    { title: "Multi-Agent AI Workflows", desc: "Event-driven orchestration using Gemini & LangChain." },
+    { title: "Local RAG Pipelines", desc: "High-accuracy vector search & contextual document retrieval." },
+    { title: "Full-Stack Architecture", desc: "Modern React, TypeScript, Node.js & REST APIs." },
+    { title: "Cloud & Microservices", desc: "Docker containerization, GCP deployment & serverless." },
   ];
 
   return (
-    <section id="about">
+    <section id="about" style={{ padding: '110px 0', borderTop: '1px solid var(--border)', position: 'relative' }}>
       <div className="container">
-        <h2 className="section-title">Engineering Profile</h2>
-        <p className="section-desc">
-          Background, core engineering checklist, and current academic focus.
-        </p>
 
-        <div className="about-grid" style={{ gridTemplateColumns: '260px 1fr 300px', gap: '32px', alignItems: 'center' }}>
-          
-          {/* Profile Photo */}
-          <div className="about-photo-col" style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="profile-card" style={{ width: '100%', maxWidth: '260px' }}>
-              <div className="profile-img-wrap" style={{ width: '100%', height: '340px', borderRadius: '20px' }}>
+        {/* Header Label */}
+        <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+          <span className="section-label">Engineering Profile</span>
+          <h2 className="section-title" style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}>
+            Crafting Intelligent Systems
+          </h2>
+          <p className="section-desc" style={{ margin: '0 auto', maxWidth: '620px' }}>
+            Bridging foundational computer science with cutting-edge AI architecture & production-ready software engineering.
+          </p>
+        </div>
+
+        {/* Main Grid: Photo Card + Story & Highlights */}
+        <div className="about-redesign-grid">
+
+          {/* Left: Premium Portrait Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <div className="profile-card" style={{ width: '100%', maxWidth: '320px' }}>
+              <div className="profile-img-wrap" style={{ width: '100%', height: '400px', borderRadius: '24px' }}>
                 <img
                   src={profileImg}
                   alt="Dhatchan K R — Software Engineer"
@@ -34,62 +50,115 @@ export default function About() {
                 <div className="profile-corner profile-corner--br" />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Center — text */}
-          <div className="about-text">
-            <p>
-              Combining core computer science foundations with modern AI engineering, cloud architecture, and full-stack software development. Building scalable web applications, autonomous AI agents, and privacy-first retrieval systems.
-            </p>
-            <p>
-              I build end-to-end applications combining core algorithms in Java, C++, and Python with modern web tech stacks like React, TypeScript, Node.js, and cloud platforms.
-            </p>
+          {/* Center/Right: Detailed Story & Capabilities */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}
+          >
+            {/* Story Card */}
+            <div className="glass-card" style={{ padding: '32px', borderRadius: '20px' }}>
+              <h3 style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text)', marginBottom: '14px', fontFamily: 'var(--font-heading)' }}>
+                Engineering Mindset
+              </h3>
+              <p style={{ fontSize: '15.5px', lineHeight: 1.75, color: 'var(--text-muted)', marginBottom: '16px' }}>
+                I specialize in bridging deep algorithmic computer science foundations (C++, Java, Python) with modern, production-grade full-stack web applications and autonomous AI agent systems.
+              </p>
+              <p style={{ fontSize: '15.5px', lineHeight: 1.75, color: 'var(--text-muted)' }}>
+                My focus centers on high-throughput RAG search pipelines, multi-agent LLM decision loops, and responsive web user interfaces designed with meticulous attention to visual detail and performance.
+              </p>
+            </div>
 
-            {/* Checklist */}
-            <ul className="checklist">
-              {checklist.map((item) => (
-                <li key={item}>{item}</li>
+            {/* Core Capability Cards Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+              {capabilities.map((cap) => (
+                <div
+                  key={cap.title}
+                  style={{
+                    background: 'var(--glass-bg)',
+                    border: '1px solid var(--glass-border)',
+                    padding: '18px 20px',
+                    borderRadius: '14px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 600, fontSize: '14px' }}>
+                    <CheckCircle2 size={16} style={{ flexShrink: 0 }} />
+                    <span>{cap.title}</span>
+                  </div>
+                  <span style={{ fontSize: '12.5px', color: 'var(--text-muted)', fontFamily: 'var(--font-main)', lineHeight: 1.5 }}>
+                    {cap.desc}
+                  </span>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
 
-          {/* Right — sidebar */}
-          <div className="sidebar-box">
-            <h4>Quick Highlights</h4>
-            <div className="info-list">
-              <div className="info-item">
-                <span className="info-label">Specialization</span>
-                <span className="info-val">AI &amp; Full Stack Systems</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Degree</span>
-                <span className="info-val">B.E. CCE</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Timeline</span>
-                <span className="info-val">2024 — 2028 Batch</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Core Tech</span>
-                <span className="info-val">React, Python, C++, GCP</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Location</span>
-                <span className="info-val">Tamil Nadu, India</span>
-              </div>
+          </motion.div>
+
+        </div>
+
+        {/* Bottom Metrics Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          style={{
+            marginTop: '56px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+          }}
+        >
+          <div className="glass-card" style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ color: 'var(--primary)', background: 'rgba(212, 175, 55, 0.1)', padding: '10px', borderRadius: '12px' }}>
+              <GraduationCap size={22} />
+            </div>
+            <div>
+              <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Degree</span>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>B.E. CCE (2024–2028)</p>
             </div>
           </div>
 
-        </div>
+          <div className="glass-card" style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ color: 'var(--primary)', background: 'rgba(212, 175, 55, 0.1)', padding: '10px', borderRadius: '12px' }}>
+              <Award size={22} />
+            </div>
+            <div>
+              <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Focus</span>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>AI & Full-Stack Systems</p>
+            </div>
+          </div>
+
+          <div className="glass-card" style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ color: 'var(--primary)', background: 'rgba(212, 175, 55, 0.1)', padding: '10px', borderRadius: '12px' }}>
+              <MapPin size={22} />
+            </div>
+            <div>
+              <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Location</span>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>Tamil Nadu, India</p>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
 
       <style>{`
-        @media (max-width: 992px) {
-          .about-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .about-photo-col {
-            margin-bottom: 16px;
+        .about-redesign-grid {
+          display: grid;
+          grid-template-columns: 320px 1fr;
+          gap: 40px;
+          align-items: center;
+        }
+        @media (max-width: 900px) {
+          .about-redesign-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
