@@ -1,319 +1,251 @@
-import { Mail, Github, Linkedin, MapPin, Send, Check, Copy, Sparkles, MessageSquare, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Linkedin, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "motion/react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [activeFocus, setActiveFocus] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("dhxtchn@gmail.com");
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setForm({ name: "", email: "", subject: "", message: "" });
-    }, 4000);
-  };
-
-  const contactRows = [
-    {
-      id: "email",
-      icon: <Mail size={18} />,
-      label: "dhxtchn@gmail.com",
-      actionLabel: copied ? "Copied to Clipboard!" : "Click to Copy Email",
-      onClick: handleCopyEmail,
-      href: undefined,
-      color: '#ef4444',
-      badge: "Primary Contact"
-    },
-    {
-      id: "github",
-      icon: <Github size={18} />,
-      label: "github.com/dhatchankr",
-      actionLabel: "View Code & Repositories ↗",
-      href: "https://github.com/dhatchankr",
-      color: '#3b82f6',
-      badge: "GitHub Profile"
-    },
-    {
-      id: "linkedin",
-      icon: <Linkedin size={18} />,
-      label: "linkedin.com/in/dhatchankr",
-      actionLabel: "Connect on LinkedIn ↗",
-      href: "https://linkedin.com/in/dhatchankr",
-      color: '#0ea5e9',
-      badge: "Professional Network"
-    },
-    {
-      id: "location",
-      icon: <MapPin size={18} />,
-      label: "Tamil Nadu, India",
-      actionLabel: "Available Worldwide (Remote / On-site)",
-      href: undefined,
-      color: '#10b981',
-      badge: "Location"
-    },
-  ];
-
-  const quickTopics = [
-    "AI Agent Systems",
-    "Full-Stack Web App",
-    "RAG & Vector Search",
-    "Open Source Collab",
-    "Hiring / Internship"
-  ];
 
   return (
-    <section id="contact" style={{ padding: '100px 0', borderTop: '1px solid var(--border)', position: 'relative', zIndex: 1 }}>
-      <div className="container">
-        
-        {/* Top Accent Line */}
+    <section
+      id="contact"
+      style={{
+        padding: '120px 0 80px',
+        borderTop: '1px solid var(--border)',
+        position: 'relative',
+        zIndex: 1,
+        overflow: 'hidden',
+      }}
+    >
+      {/* Ambient glow behind the text */}
+      <div style={{
+        position: 'absolute',
+        top: '35%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '650px',
+        height: '650px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div className="container" style={{ textAlign: 'center', position: 'relative' }}>
+
+        {/* Label row */}
         <div style={{
-          width: '60px',
-          height: '3px',
-          borderRadius: '2px',
-          background: 'linear-gradient(90deg, var(--primary), var(--secondary))',
-          marginBottom: '20px'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '14px',
+          marginBottom: '32px',
+        }}>
+          <div style={{ width: '36px', height: '1.5px', background: 'var(--primary)', borderRadius: '2px' }} />
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '11px',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'var(--primary)',
+            fontWeight: 600,
+          }}>
+            Let's Connect
+          </span>
+          <div style={{ width: '36px', height: '1.5px', background: 'var(--primary)', borderRadius: '2px' }} />
+        </div>
+
+        {/* Big headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'clamp(38px, 7vw, 80px)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            color: 'var(--text)',
+            marginBottom: '20px',
+            maxWidth: '820px',
+            margin: '0 auto 20px',
+          }}
+        >
+          Let's build something<br />
+          <span style={{
+            background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
+            meaningful.
+          </span>
+        </motion.h2>
+
+        {/* Sub-text */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          style={{
+            color: 'var(--text-muted)',
+            fontSize: '16px',
+            lineHeight: 1.75,
+            maxWidth: '520px',
+            margin: '0 auto 48px',
+            fontFamily: 'var(--font-main)',
+          }}
+        >
+          Open for software engineering roles, AI system projects, and ambitious collaborations.
+        </motion.p>
+
+        {/* Name + tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          style={{ marginBottom: '44px' }}
+        >
+          <p style={{
+            fontFamily: 'var(--font-main)',
+            fontSize: '16px',
+            color: 'var(--text)',
+            fontWeight: 600,
+            marginBottom: '6px',
+          }}>
+            Dhatchan K R
+          </p>
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '13px',
+            color: 'var(--primary)',
+            fontStyle: 'italic',
+          }}>
+            "Authenticity breeds identity."
+          </p>
+        </motion.div>
+
+        {/* Action buttons (Back to Top removed) */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '14px',
+            flexWrap: 'wrap',
+          }}
+        >
+          {/* LinkedIn */}
+          <motion.a
+            href="https://linkedin.com/in/dhatchankr"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="contact-action-btn contact-action-btn--fill"
+          >
+            <Linkedin size={15} />
+            LinkedIn
+          </motion.a>
+
+          {/* GitHub */}
+          <motion.a
+            href="https://github.com/dhatchankr"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="contact-action-btn contact-action-btn--outline"
+          >
+            <Github size={15} />
+            GitHub
+          </motion.a>
+
+          {/* Email copy */}
+          <motion.button
+            onClick={handleCopyEmail}
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="contact-action-btn contact-action-btn--outline"
+          >
+            {copied
+              ? <><Check size={15} />Copied!</>
+              : <><Mail size={15} />Email</>
+            }
+          </motion.button>
+        </motion.div>
+
+        {/* Divider */}
+        <div style={{
+          width: '100%',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent)',
+          margin: '60px auto 28px',
+          maxWidth: '600px',
         }} />
 
-        <h2 className="section-title" style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}>Get in Touch</h2>
-        <p className="section-desc" style={{ maxWidth: '650px', fontSize: '16px' }}>
-          Open for software engineering roles, AI system projects, cloud architecture, and ambitious collaborations. Let's turn ideas into high-impact reality.
+        {/* Footer note */}
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '12px',
+          color: 'rgba(136,146,164,0.5)',
+          letterSpacing: '0.04em',
+        }}>
+          dhxtchn@gmail.com &nbsp;·&nbsp; Tamil Nadu, India &nbsp;·&nbsp; Open to remote worldwide
         </p>
 
-        <div className="contact-layout" style={{ marginTop: '40px' }}>
-          
-          {/* Left Column: Interactive Contact Link Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            
-            <div style={{ padding: '24px', borderRadius: '16px', background: 'rgba(17,23,38,0.5)', border: '1px solid var(--border)', backdropFilter: 'blur(12px)' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text)', fontFamily: 'var(--font-heading)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Sparkles size={16} style={{ color: 'var(--primary)' }} />
-                <span>Direct Connection Channels</span>
-              </h3>
-
-              <div className="contact-links" style={{ gap: '14px' }}>
-                {contactRows.map((row) => {
-                  const Content = (
-                    <motion.div
-                      whileHover={{ x: 6, scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
-                      onMouseEnter={() => setActiveFocus(row.id)}
-                      onMouseLeave={() => setActiveFocus(null)}
-                      style={{
-                        padding: '16px 20px',
-                        background: activeFocus === row.id ? 'rgba(59, 130, 246, 0.12)' : 'var(--bg-subtle)',
-                        border: activeFocus === row.id ? '1px solid var(--primary)' : '1px solid var(--border)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'pointer',
-                        transition: 'all 0.25s ease',
-                        boxShadow: activeFocus === row.id ? '0 8px 25px -5px rgba(59,130,246,0.25)' : 'none'
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                        <div style={{
-                          padding: '10px',
-                          borderRadius: '10px',
-                          background: 'rgba(255,255,255,0.04)',
-                          border: '1px solid var(--border)',
-                          color: row.color,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center'
-                        }}>
-                          {row.icon}
-                        </div>
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 600, color: 'var(--text)' }}>
-                              {row.label}
-                            </span>
-                          </div>
-                          <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontFamily: 'var(--font-main)' }}>
-                            {row.actionLabel}
-                          </span>
-                        </div>
-                      </div>
-
-                      <ArrowUpRight size={16} style={{
-                        color: activeFocus === row.id ? 'var(--primary)' : 'var(--text-muted)',
-                        transform: activeFocus === row.id ? 'translate(2px, -2px)' : 'none',
-                        transition: 'transform 0.2s ease, color 0.2s ease'
-                      }} />
-                    </motion.div>
-                  );
-
-                  return row.href ? (
-                    <a
-                      key={row.id}
-                      href={row.href}
-                      target={row.href.startsWith('http') ? '_blank' : undefined}
-                      rel="noreferrer"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      {Content}
-                    </a>
-                  ) : (
-                    <div key={row.id} onClick={row.onClick}>
-                      {Content}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Quick Topic Chips */}
-            <div style={{ padding: '20px 24px', borderRadius: '16px', background: 'rgba(17,23,38,0.4)', border: '1px solid var(--border)' }}>
-              <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, display: 'block', marginBottom: '12px' }}>
-                Quick Subject Selector:
-              </span>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {quickTopics.map((topic) => (
-                  <button
-                    key={topic}
-                    onClick={() => setForm((prev) => ({ ...prev, subject: `Discussion: ${topic}` }))}
-                    style={{
-                      padding: '6px 14px',
-                      borderRadius: '20px',
-                      fontSize: '12px',
-                      fontFamily: 'var(--font-mono)',
-                      background: form.subject.includes(topic) ? 'rgba(59,130,246,0.2)' : 'var(--bg-subtle)',
-                      border: form.subject.includes(topic) ? '1px solid var(--primary)' : '1px solid var(--border)',
-                      color: form.subject.includes(topic) ? '#fff' : 'var(--text-muted)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                  >
-                    + {topic}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Premium Interactive Form */}
-          <div className="glass-card" style={{ padding: '32px', borderRadius: '20px', border: '1px solid var(--border-glow)', boxShadow: '0 20px 50px -10px rgba(0,0,0,0.5)' }}>
-            
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid var(--border)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <MessageSquare size={20} style={{ color: 'var(--primary)' }} />
-                <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text)', fontFamily: 'var(--font-heading)' }}>
-                  Send Message
-                </h3>
-              </div>
-              <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--accent)', background: 'rgba(16,185,129,0.1)', padding: '4px 10px', borderRadius: '12px', border: '1px solid rgba(16,185,129,0.3)' }}>
-                ● Active Response
-              </span>
-            </div>
-
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{ padding: '60px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
-              >
-                <div style={{
-                  width: '64px', height: '64px', borderRadius: '50%',
-                  background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.5)',
-                  color: 'var(--accent)', display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', boxShadow: '0 0 30px rgba(16,185,129,0.3)'
-                }}>
-                  <Check size={32} />
-                </div>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text)', fontFamily: 'var(--font-heading)' }}>
-                  Message Delivered!
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '15px', maxWidth: '380px', lineHeight: 1.6 }}>
-                  Thank you <strong style={{ color: 'var(--primary)' }}>{form.name}</strong>. Your note was received, and I will reply to <span style={{ color: 'var(--text)', fontFamily: 'var(--font-mono)' }}>{form.email}</span> shortly.
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="contact-form" style={{ gap: '20px' }}>
-                
-                <div>
-                  <label className="form-label" style={{ fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>
-                    YOUR NAME
-                  </label>
-                  <input
-                    type="text" required
-                    value={form.name}
-                    onChange={e => setForm({ ...form, name: e.target.value })}
-                    placeholder="e.g. Alex Mercer"
-                    className="form-input"
-                    style={{ background: 'var(--bg-subtle)', borderRadius: '10px' }}
-                  />
-                </div>
-
-                <div>
-                  <label className="form-label" style={{ fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>
-                    EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email" required
-                    value={form.email}
-                    onChange={e => setForm({ ...form, email: e.target.value })}
-                    placeholder="alex@company.com"
-                    className="form-input"
-                    style={{ background: 'var(--bg-subtle)', borderRadius: '10px' }}
-                  />
-                </div>
-
-                <div>
-                  <label className="form-label" style={{ fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>
-                    SUBJECT
-                  </label>
-                  <input
-                    type="text"
-                    value={form.subject}
-                    onChange={e => setForm({ ...form, subject: e.target.value })}
-                    placeholder="AI Application Project / Internship Opportunity"
-                    className="form-input"
-                    style={{ background: 'var(--bg-subtle)', borderRadius: '10px' }}
-                  />
-                </div>
-
-                <div>
-                  <label className="form-label" style={{ fontWeight: 600, color: 'var(--text)', marginBottom: '8px' }}>
-                    YOUR MESSAGE
-                  </label>
-                  <textarea
-                    rows={5} required
-                    value={form.message}
-                    onChange={e => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell me about your project, idea, or role details..."
-                    className="form-input"
-                    style={{ background: 'var(--bg-subtle)', borderRadius: '10px' }}
-                  />
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center', padding: '16px', borderRadius: '12px', fontSize: '15px', fontWeight: 700 }}
-                >
-                  <Send size={16} />
-                  <span>Send Message Directly</span>
-                </motion.button>
-
-              </form>
-            )}
-          </div>
-
-        </div>
       </div>
+
+      <style>{`
+        .contact-action-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 26px;
+          border-radius: 50px;
+          font-size: 14px;
+          font-weight: 600;
+          font-family: var(--font-main);
+          cursor: none;
+          border: none;
+          text-decoration: none;
+          transition: all 0.25s ease;
+          white-space: nowrap;
+        }
+        .contact-action-btn--fill {
+          background: #ffffff;
+          color: #0a0c12;
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+        .contact-action-btn--fill:hover {
+          background: var(--primary);
+          color: #0a0c12;
+          box-shadow: 0 6px 28px rgba(212, 175, 55, 0.45);
+        }
+        .contact-action-btn--outline {
+          background: rgba(255, 255, 255, 0.05);
+          color: var(--text);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(10px);
+        }
+        .contact-action-btn--outline:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(212, 175, 55, 0.3);
+          color: var(--primary);
+        }
+      `}</style>
     </section>
   );
 }
