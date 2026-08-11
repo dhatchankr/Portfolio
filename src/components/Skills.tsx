@@ -5,19 +5,18 @@ import { Code2, Layout, Server, Brain } from "lucide-react";
 const skillsData = [
   {
     id: "ai-rag",
-    category: "Generative & Agentic AI",
+    category: "Generative & AI Engineering",
     icon: <Brain size={20} />,
     skills: [
-      { name: "Agentic AI", level: "Advanced" },
-      { name: "Generative AI", level: "Advanced" },
-      { name: "LLMs & Prompt Engineering", level: "Expert" },
-      { name: "LangChain", level: "Advanced" },
-      { name: "LlamaIndex", level: "Intermediate" },
-      { name: "CrewAI Swarms", level: "Advanced" },
-      { name: "Gemini & OpenAI APIs", level: "Expert" },
-      { name: "RAG & Vector Search", level: "Advanced" },
-      { name: "ChromaDB & Pinecone", level: "Advanced" },
-      { name: "PyTorch & OpenCV", level: "Intermediate" },
+      "Generative AI",
+      "LLMs & Prompt Engineering",
+      "LangChain",
+      "LlamaIndex",
+      "CrewAI Swarms",
+      "Gemini & OpenAI APIs",
+      "RAG & Vector Search",
+      "ChromaDB & Pinecone",
+      "PyTorch & OpenCV",
     ]
   },
   {
@@ -25,14 +24,14 @@ const skillsData = [
     category: "Backend & Cloud Systems",
     icon: <Server size={20} />,
     skills: [
-      { name: "Node.js & Express.js", level: "Expert" },
-      { name: "FastAPI", level: "Advanced" },
-      { name: "REST APIs & WebSockets", level: "Expert" },
-      { name: "PostgreSQL & MongoDB", level: "Advanced" },
-      { name: "Redis", level: "Intermediate" },
-      { name: "Docker Containerization", level: "Advanced" },
-      { name: "GCP & Firebase Platform", level: "Advanced" },
-      { name: "Git & GitHub Workflows", level: "Expert" },
+      "Node.js & Express.js",
+      "FastAPI",
+      "REST APIs & WebSockets",
+      "PostgreSQL & MongoDB",
+      "Redis",
+      "Docker Containerization",
+      "GCP & Firebase Platform",
+      "Git & GitHub Workflows",
     ]
   },
   {
@@ -40,13 +39,13 @@ const skillsData = [
     category: "Frontend & UI Design",
     icon: <Layout size={20} />,
     skills: [
-      { name: "React.js & Next.js", level: "Expert" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "Tailwind CSS", level: "Expert" },
-      { name: "Redux Toolkit", level: "Advanced" },
-      { name: "Framer Motion", level: "Advanced" },
-      { name: "Three.js", level: "Intermediate" },
-      { name: "Vite Bundler", level: "Expert" },
+      "React.js & Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Framer Motion",
+      "Three.js",
+      "Vite Bundler",
     ]
   },
   {
@@ -54,13 +53,13 @@ const skillsData = [
     category: "Core Languages",
     icon: <Code2 size={20} />,
     skills: [
-      { name: "Python", level: "Expert" },
-      { name: "JavaScript (ES6+)", level: "Expert" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "C / C++", level: "Advanced" },
-      { name: "Java", level: "Advanced" },
-      { name: "SQL", level: "Advanced" },
-      { name: "Bash / Shell", level: "Intermediate" },
+      "Python",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "C / C++",
+      "Java",
+      "SQL",
+      "Bash / Shell",
     ]
   }
 ];
@@ -141,34 +140,23 @@ export default function Skills() {
               </div>
 
               <div className="tag-cloud" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {group.skills.map((item) => (
+                {group.skills.map((skillName) => (
                   <motion.div
-                    key={item.name}
+                    key={skillName}
                     whileHover={{ y: -2, scale: 1.03 }}
                     className="tag"
                     style={{
-                      padding: '8px 14px',
+                      padding: '8px 16px',
                       fontSize: '13px',
                       borderRadius: '8px',
                       background: 'rgba(255, 255, 255, 0.03)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '8px',
                       cursor: 'default'
                     }}
                   >
-                    <span style={{ fontWeight: 600, color: 'var(--text)' }}>{item.name}</span>
-                    <span style={{
-                      fontSize: '10px',
-                      fontFamily: 'var(--font-mono)',
-                      color: 'var(--primary)',
-                      background: 'rgba(212, 175, 55, 0.12)',
-                      padding: '2px 6px',
-                      borderRadius: '4px'
-                    }}>
-                      {item.level}
-                    </span>
+                    <span style={{ fontWeight: 600, color: 'var(--text)' }}>{skillName}</span>
                   </motion.div>
                 ))}
               </div>

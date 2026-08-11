@@ -7,7 +7,6 @@ import WhatIBuild from "./components/WhatIBuild";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Timeline from "./components/Timeline";
-import GitHub from "./components/GitHub";
 import CurrentLearning from "./components/CurrentLearning";
 import WhyHireMe from "./components/WhyHireMe";
 import FutureVision from "./components/FutureVision";
@@ -123,7 +122,6 @@ export default function App() {
         <Skills />
         <Projects />
         <Timeline />
-        <GitHub />
         <CurrentLearning />
         <WhyHireMe />
         <FutureVision />

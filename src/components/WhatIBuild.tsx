@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Bot, Network, Layers, Cloud, Sparkles, ArrowRight } from "lucide-react";
 
 export default function WhatIBuild() {
-  const [activeId, setActiveId] = useState<string>("agentic-ai");
+  const [activeId, setActiveId] = useState<string>("gen-ai");
 
   const focuses = [
     {
