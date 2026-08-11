@@ -103,7 +103,7 @@ export default function Footer() {
             fontFamily: 'var(--font-main)',
             margin: 0
           }}>
-            © {new Date().getFullYear()} Dhatchan K R. Designed &amp; Developed with <span style={{ color: '#e05555' }}>❤️</span> using React, TypeScript &amp; Tailwind CSS.
+            © {new Date().getFullYear()} Dhatchan K R. Architected &amp; Crafted with <span style={{ color: '#e05555' }}>❤️</span> using React, TypeScript &amp; Vite.
           </p>
 
         </div>
