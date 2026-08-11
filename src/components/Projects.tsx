@@ -19,19 +19,25 @@ export default function Projects() {
     return true;
   });
 
-  // Lock body scroll and hide top navbar when modal is active
+  // Enforce bulletproof scroll locking on body & html and hide top navbar
   useEffect(() => {
     const nav = document.querySelector('.gnav-wrap') as HTMLElement | null;
     if (activeBlueprintProject) {
-      document.body.style.overflow = "hidden";
-      if (nav) nav.style.display = "none";
+      document.body.style.setProperty("overflow", "hidden", "important");
+      document.documentElement.style.setProperty("overflow", "hidden", "important");
+      document.body.classList.add("modal-open");
+      if (nav) nav.style.setProperty("display", "none", "important");
     } else {
-      document.body.style.overflow = "auto";
-      if (nav) nav.style.display = "flex";
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
+      document.body.classList.remove("modal-open");
+      if (nav) nav.style.setProperty("display", "flex");
     }
     return () => {
-      document.body.style.overflow = "auto";
-      if (nav) nav.style.display = "flex";
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
+      document.body.classList.remove("modal-open");
+      if (nav) nav.style.setProperty("display", "flex");
     };
   }, [activeBlueprintProject]);
 
@@ -182,14 +188,21 @@ export default function Projects() {
       {/* ── DEEP ARCHITECTURAL CASE STUDY FULL SCREEN MODAL ── */}
       <AnimatePresence>
         {activeBlueprintProject && (
-          <div style={{
-            position: 'fixed', inset: 0, zIndex: 2000,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '24px',
-            background: 'rgba(6, 8, 14, 0.75)',
-            backdropFilter: 'blur(24px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(180%)'
-          }}>
+          <div
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setActiveBlueprintProject(null);
+              }
+            }}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 9999,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '24px',
+              background: 'rgba(5, 7, 12, 0.88)',
+              backdropFilter: 'blur(30px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(30px) saturate(180%)'
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

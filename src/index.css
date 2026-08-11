@@ -40,6 +40,16 @@ body {
   cursor: none;
 }
 
+body.modal-open, html.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+body.modal-open .gnav-wrap {
+  display: none !important;
+}
+
 /* ─── Real Organic Fluid Glowing Liquid Orb ─────────────────────────────── */
 #cursor-blob {
   position: fixed;
