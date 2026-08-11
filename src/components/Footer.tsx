@@ -1,34 +1,53 @@
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="container">
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+    <footer style={{
+      padding: '60px 0 36px',
+      borderTop: '1px solid var(--border)',
+      background: 'rgba(8, 10, 16, 0.95)',
+      position: 'relative',
+      zIndex: 1
+    }}>
+      <div className="container" style={{ textAlign: 'center' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '24px',
+          maxWidth: '700px',
+          margin: '0 auto'
+        }}>
 
-          {/* Logo */}
-          <a href="#hero" style={{
-            fontFamily: 'var(--font-heading)', fontWeight: 800,
-            fontSize: '18px', color: 'var(--text)', letterSpacing: '0.04em',
-            textTransform: 'uppercase'
+          {/* Large Name Headline */}
+          <h2 style={{
+            fontFamily: 'var(--font-main)',
+            fontWeight: 800,
+            fontSize: 'clamp(28px, 4vw, 42px)',
+            color: 'var(--text)',
+            letterSpacing: '-0.02em',
+            margin: 0
           }}>
-            DHATCHAN K R<span style={{ color: 'var(--primary)' }}>.</span>
-          </a>
+            Dhatchan K R
+          </h2>
 
-          {/* Tagline */}
+          {/* Subtitle / Role Tagline */}
           <p style={{
-            fontFamily: 'var(--font-mono)', fontSize: '13px',
-            color: 'var(--text-muted)', margin: 0
+            fontFamily: 'var(--font-main)',
+            fontSize: '14.5px',
+            color: 'var(--text-muted)',
+            margin: 0,
+            lineHeight: 1.6
           }}>
-            AI Engineer &nbsp;•&nbsp; Full-Stack Developer &nbsp;•&nbsp; Cloud Enthusiast
+            Passionate Software Engineer &nbsp;|&nbsp; Full-Stack &amp; AI Systems Developer &nbsp;|&nbsp; Problem Solver &nbsp;|&nbsp; Tech Enthusiast
           </p>
 
-          {/* Social links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          {/* Circular Social Buttons */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '6px' }}>
             {[
-              { href: 'https://github.com/dhatchankr', icon: <Github size={16} />, label: 'GitHub' },
-              { href: 'https://www.linkedin.com/in/dhatchankr/', icon: <Linkedin size={16} />, label: 'LinkedIn' },
-              { href: 'mailto:dhxtchn@gmail.com', icon: <Mail size={16} />, label: 'dhxtchn@gmail.com' },
+              { href: 'https://github.com/dhatchankr', icon: <Github size={18} />, label: 'GitHub' },
+              { href: 'https://www.linkedin.com/in/dhatchankr/', icon: <Linkedin size={18} />, label: 'LinkedIn' },
+              { href: 'mailto:dhxtchn@gmail.com', icon: <Mail size={18} />, label: 'Email' },
             ].map(({ href, icon, label }) => (
               <a
                 key={label}
@@ -37,58 +56,55 @@ export default function Footer() {
                 rel="noreferrer"
                 title={label}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: '6px',
-                  color: 'var(--text-muted)', fontSize: '13px',
-                  fontFamily: 'var(--font-mono)',
-                  transition: 'color 0.2s ease'
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  color: 'var(--text)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.25s ease',
+                  textDecoration: 'none'
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = 'var(--primary)';
+                  e.currentTarget.style.color = '#0a0c12';
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.4)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.color = 'var(--text)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
                 {icon}
-                <span>{label}</span>
               </a>
             ))}
           </div>
 
           {/* Divider */}
-          <div style={{ width: '100%', height: '1px', background: 'var(--border)' }} />
-
-          {/* Bottom row */}
           <div style={{
-            display: 'flex', alignItems: 'center',
-            justifyContent: 'space-between', width: '100%', flexWrap: 'wrap', gap: '12px'
+            width: '100%',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent)',
+            margin: '12px 0 0'
+          }} />
+
+          {/* Copyright Note */}
+          <p style={{
+            fontSize: '13px',
+            color: 'var(--text-muted)',
+            fontFamily: 'var(--font-main)',
+            margin: 0
           }}>
-            <p style={{ fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', margin: 0 }}>
-              Designed &amp; built with curiosity, code, and AI.
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <p style={{ fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', margin: 0 }}>
-                © {new Date().getFullYear()} Dhatchan K R. All rights reserved.
-              </p>
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                title="Back to top"
-                style={{
-                  padding: '8px', borderRadius: '8px',
-                  background: 'var(--bg-subtle)', border: '1px solid var(--border)',
-                  color: 'var(--text-muted)', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center',
-                  transition: 'all 0.25s ease'
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'var(--primary)';
-                  e.currentTarget.style.color = 'var(--text)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
-                  e.currentTarget.style.color = 'var(--text-muted)';
-                }}
-              >
-                <ArrowUp size={16} />
-              </button>
-            </div>
-          </div>
+            © {new Date().getFullYear()} Dhatchan K R. Designed &amp; Developed with <span style={{ color: '#e05555' }}>❤️</span> using React, TypeScript &amp; Tailwind CSS.
+          </p>
 
         </div>
       </div>
