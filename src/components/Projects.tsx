@@ -19,6 +19,15 @@ export default function Projects() {
     return true;
   });
 
+  // Lock body scroll when modal is active
+  useState(() => {
+    if (activeBlueprintProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  });
+
   return (
     <section id="projects" style={{ padding: '90px 0', borderTop: '1px solid var(--border)', position: 'relative', zIndex: 1 }}>
       <div style={{ maxWidth: '1060px', margin: '0 auto', padding: '0 24px' }}>
@@ -127,6 +136,7 @@ export default function Projects() {
                     onClick={() => {
                       setActiveBlueprintProject(project);
                       setActiveModalTab("overview");
+                      document.body.style.overflow = "hidden";
                     }}
                     className="btn btn-primary"
                     style={{ flex: 1, justifyContent: 'center', fontSize: '12px', padding: '9px 14px' }}
@@ -167,12 +177,12 @@ export default function Projects() {
       <AnimatePresence>
         {activeBlueprintProject && (
           <div style={{
-            position: 'fixed', inset: 0, zIndex: 200,
+            position: 'fixed', inset: 0, zIndex: 2000,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '24px',
-            background: 'rgba(6, 8, 14, 0.72)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
+            background: 'rgba(6, 8, 14, 0.75)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)'
           }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -181,12 +191,12 @@ export default function Projects() {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 width: '88%', maxWidth: '1000px', height: '80vh',
-                background: 'rgba(12, 16, 28, 0.65)',
-                backdropFilter: 'blur(24px) saturate(200%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-                border: '1px solid rgba(212, 175, 55, 0.25)',
+                background: 'rgba(10, 13, 22, 0.55)',
+                backdropFilter: 'blur(30px) saturate(210%)',
+                WebkitBackdropFilter: 'blur(30px) saturate(210%)',
+                border: '1px solid rgba(212, 175, 55, 0.22)',
                 borderRadius: '24px',
-                boxShadow: '0 25px 80px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                boxShadow: '0 30px 90px -20px rgba(0, 0, 0, 0.85), 0 0 50px rgba(212, 175, 55, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
                 display: 'flex', flexDirection: 'column',
                 overflow: 'hidden'
               }}
@@ -219,17 +229,20 @@ export default function Projects() {
                 </div>
 
                 <button
-                  onClick={() => setActiveBlueprintProject(null)}
+                  onClick={() => {
+                    setActiveBlueprintProject(null);
+                    document.body.style.overflow = "auto";
+                  }}
                   style={{
-                    padding: '8px 12px', borderRadius: '8px',
-                    background: 'var(--bg)', border: '1px solid var(--border)',
-                    color: 'var(--text-muted)', cursor: 'pointer',
+                    padding: '8px 14px', borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,175,55,0.3)',
+                    color: 'var(--text)', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', gap: '6px',
                     fontSize: '12px', fontFamily: 'var(--font-mono)',
                     transition: 'all 0.2s ease'
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.color = 'var(--text)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.background = 'rgba(212,175,55,0.15)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(212,175,55,0.3)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
                 >
                   <X size={16} />
                   <span>Esc</span>
@@ -503,7 +516,10 @@ export default function Projects() {
                 </a>
 
                 <button
-                  onClick={() => setActiveBlueprintProject(null)}
+                  onClick={() => {
+                    setActiveBlueprintProject(null);
+                    document.body.style.overflow = "auto";
+                  }}
                   className="btn btn-secondary"
                   style={{ fontSize: '12px', padding: '10px 18px' }}
                 >
