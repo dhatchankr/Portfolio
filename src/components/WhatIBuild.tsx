@@ -1,22 +1,22 @@
 export default function WhatIBuild() {
   const focuses = [
     {
-      id: "gen-ai",
-      title: "Generative AI",
-      meta: "LLMs & AI APIs",
-      icon: "🤖",
+      id: "agentic-ai",
+      title: "Agentic AI Systems",
+      meta: "Autonomous Agents & Orchestration",
+      icon: "🧠",
       description:
-        "Building applications powered by modern LLMs, AI APIs, prompt engineering, RAG, and intelligent automation.",
-      tags: ["LLMs", "Prompt Engineering", "RAG", "AI APIs"]
+        "Building autonomous, goal-driven AI agents capable of multi-step reasoning, tool execution, memory management, and self-reflection.",
+      tags: ["Agentic AI", "Tool Calling", "Memory Management", "Goal Decomposition"]
     },
     {
       id: "multi-agent",
       title: "Multi-Agent Systems",
-      meta: "Autonomous AI",
+      meta: "Collaborative Swarms",
       icon: "🕸️",
       description:
-        "Designing systems where specialized AI agents collaborate to solve complex tasks autonomously.",
-      tags: ["Agent Orchestration", "Event Bus", "Autonomous Workflows"]
+        "Designing systems where specialized AI agents collaborate through event buses and inter-agent communication to solve complex workflows autonomously.",
+      tags: ["Agent Orchestration", "Event Bus", "Autonomous Workflows", "Swarm Intelligence"]
     },
     {
       id: "fullstack",
@@ -33,7 +33,7 @@ export default function WhatIBuild() {
       meta: "GCP & Firebase",
       icon: "☁️",
       description:
-        "Learning how to design scalable, reliable, and cloud-ready software systems using Firebase, GCP, and Docker.",
+        "Designing scalable, reliable, and cloud-ready software systems using Firebase, GCP, and Docker.",
       tags: ["Firebase", "GCP", "Docker", "Distributed Systems"]
     }
   ];

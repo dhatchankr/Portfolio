@@ -1,19 +1,19 @@
 const skillsData = [
   {
     category: "Languages",
-    skills: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
+    skills: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL", "Bash / Shell", "HTML5 / CSS3"]
   },
   {
-    category: "Frontend",
-    skills: ["React.js", "Next.js", "Tailwind CSS", "Redux", "Three.js", "Framer Motion"]
+    category: "Frontend & UI",
+    skills: ["React.js", "Next.js", "Tailwind CSS", "Redux Toolkit", "Three.js", "Framer Motion", "Vite", "HTML/CSS"]
   },
   {
     category: "Backend & Cloud",
-    skills: ["Node.js", "Express.js", "FastAPI", "PostgreSQL", "MongoDB", "Docker", "GCP", "Firebase"]
+    skills: ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSockets / Socket.IO", "PostgreSQL", "MongoDB", "Redis", "Docker", "GCP", "Firebase", "Git / GitHub"]
   },
   {
-    category: "AI, ML & Vector Search",
-    skills: ["LangChain", "LlamaIndex", "OpenAI API", "Gemini API", "PyTorch", "OpenCV", "ChromaDB"]
+    category: "Agentic AI & Vector Search",
+    skills: ["Agentic AI", "LangChain", "LlamaIndex", "CrewAI", "Gemini API", "OpenAI API", "RAG Pipelines", "Vector Databases", "ChromaDB", "Pinecone", "PyTorch", "OpenCV", "Prompt Engineering"]
   }
 ];
 
@@ -23,10 +23,10 @@ export default function Skills() {
       <div className="container">
         <h2 className="section-title">Technical Skill Matrix</h2>
         <p className="section-desc">
-          Technologies, frameworks, languages, and developer tools I work with.
+          Technologies, frameworks, languages, AI architectures, and developer tools I work with.
         </p>
 
-        {/* 4-column tag grid — no filter pills, matches screenshot */}
+        {/* 4-column tag grid */}
         <div className="skills-wrapper">
           {skillsData.map((group) => (
             <div key={group.category} className="skill-category">
