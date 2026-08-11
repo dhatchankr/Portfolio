@@ -19,14 +19,21 @@ export default function Projects() {
     return true;
   });
 
-  // Lock body scroll when modal is active
-  useState(() => {
+  // Lock body scroll and hide top navbar when modal is active
+  useEffect(() => {
+    const nav = document.querySelector('.gnav-wrap') as HTMLElement | null;
     if (activeBlueprintProject) {
       document.body.style.overflow = "hidden";
+      if (nav) nav.style.display = "none";
     } else {
       document.body.style.overflow = "auto";
+      if (nav) nav.style.display = "flex";
     }
-  });
+    return () => {
+      document.body.style.overflow = "auto";
+      if (nav) nav.style.display = "flex";
+    };
+  }, [activeBlueprintProject]);
 
   return (
     <section id="projects" style={{ padding: '90px 0', borderTop: '1px solid var(--border)', position: 'relative', zIndex: 1 }}>
@@ -136,7 +143,6 @@ export default function Projects() {
                     onClick={() => {
                       setActiveBlueprintProject(project);
                       setActiveModalTab("overview");
-                      document.body.style.overflow = "hidden";
                     }}
                     className="btn btn-primary"
                     style={{ flex: 1, justifyContent: 'center', fontSize: '12px', padding: '9px 14px' }}
@@ -229,10 +235,7 @@ export default function Projects() {
                 </div>
 
                 <button
-                  onClick={() => {
-                    setActiveBlueprintProject(null);
-                    document.body.style.overflow = "auto";
-                  }}
+                  onClick={() => setActiveBlueprintProject(null)}
                   style={{
                     padding: '8px 14px', borderRadius: '8px',
                     background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,175,55,0.3)',
@@ -516,10 +519,7 @@ export default function Projects() {
                 </a>
 
                 <button
-                  onClick={() => {
-                    setActiveBlueprintProject(null);
-                    document.body.style.overflow = "auto";
-                  }}
+                  onClick={() => setActiveBlueprintProject(null)}
                   className="btn btn-secondary"
                   style={{ fontSize: '12px', padding: '10px 18px' }}
                 >
