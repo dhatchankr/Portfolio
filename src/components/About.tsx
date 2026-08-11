@@ -1,3 +1,5 @@
+import profileImg from "../assets/images/profile.jpg";
+
 export default function About() {
   const checklist = [
     "Multi-Agent AI Systems",
@@ -14,8 +16,27 @@ export default function About() {
           Background, core engineering checklist, and current academic focus.
         </p>
 
-        <div className="about-grid">
-          {/* Left — text */}
+        <div className="about-grid" style={{ gridTemplateColumns: '260px 1fr 300px', gap: '32px', alignItems: 'center' }}>
+          
+          {/* Profile Photo */}
+          <div className="about-photo-col" style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="profile-card" style={{ width: '100%', maxWidth: '260px' }}>
+              <div className="profile-img-wrap" style={{ width: '100%', height: '340px', borderRadius: '20px' }}>
+                <img
+                  src={profileImg}
+                  alt="Dhatchan K R — Software Engineer"
+                  className="profile-img"
+                />
+                <div className="profile-img-overlay" />
+                <div className="profile-corner profile-corner--tl" />
+                <div className="profile-corner profile-corner--tr" />
+                <div className="profile-corner profile-corner--bl" />
+                <div className="profile-corner profile-corner--br" />
+              </div>
+            </div>
+          </div>
+
+          {/* Center — text */}
           <div className="about-text">
             <p>
               Combining core computer science foundations with modern AI engineering, cloud architecture, and full-stack software development. Building scalable web applications, autonomous AI agents, and privacy-first retrieval systems.
@@ -58,8 +79,20 @@ export default function About() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 992px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .about-photo-col {
+            margin-bottom: 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
