@@ -12,8 +12,8 @@ const skillsData = [
     skills: ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSockets / Socket.IO", "PostgreSQL", "MongoDB", "Redis", "Docker", "GCP", "Firebase", "Git / GitHub"]
   },
   {
-    category: "Agentic AI & Vector Search",
-    skills: ["Agentic AI", "LangChain", "LlamaIndex", "CrewAI", "Gemini API", "OpenAI API", "RAG Pipelines", "Vector Databases", "ChromaDB", "Pinecone", "PyTorch", "OpenCV", "Prompt Engineering"]
+    category: "Generative & Agentic AI",
+    skills: ["Generative AI", "Agentic AI", "LLMs", "LangChain", "LlamaIndex", "CrewAI", "Gemini API", "OpenAI API", "RAG Pipelines", "Vector Search", "ChromaDB", "Pinecone", "PyTorch", "OpenCV", "Prompt Engineering"]
   }
 ];
 
