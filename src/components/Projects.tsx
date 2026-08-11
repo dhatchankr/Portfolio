@@ -169,20 +169,24 @@ export default function Projects() {
           <div style={{
             position: 'fixed', inset: 0, zIndex: 200,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '16px',
-            background: 'rgba(4, 7, 13, 0.88)',
-            backdropFilter: 'blur(16px)'
+            padding: '24px',
+            background: 'rgba(6, 8, 14, 0.72)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
           }}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                width: '100%', maxWidth: '1100px', height: '92vh',
-                background: 'var(--bg-subtle)',
-                border: '1px solid var(--border-glow)',
-                borderRadius: '16px',
-                boxShadow: '0 0 80px rgba(59, 130, 246, 0.25)',
+                width: '88%', maxWidth: '1000px', height: '80vh',
+                background: 'rgba(12, 16, 28, 0.65)',
+                backdropFilter: 'blur(24px) saturate(200%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+                border: '1px solid rgba(212, 175, 55, 0.25)',
+                borderRadius: '24px',
+                boxShadow: '0 25px 80px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
                 display: 'flex', flexDirection: 'column',
                 overflow: 'hidden'
               }}

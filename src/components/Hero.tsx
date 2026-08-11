@@ -41,7 +41,7 @@ export default function Hero() {
             {/* CTAs */}
             <div className="hero-ctas">
               <a href="#projects" className="btn btn-primary">
-                Explore Projects →
+                Explore Projects
               </a>
               <a href="#contact" className="btn btn-secondary">
                 Contact Me
